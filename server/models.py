@@ -37,5 +37,14 @@ class Pet(db.Model, SerializerMixin):
     gender = db.Column(db.String(255), nullable=False)
     type = db.Column(db.String(255), nullable=False)
 
-
-
+class AdoptionApplication(db.Model, SerializerMixin):
+    __tablename__ = "adoption_applications"
+    id = db.Column(db.Integer, primary_key=True)
+    pet_id = db.Column(db.Integer, db.ForeignKey("pets.id"), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    name = db.Column(db.String(255), nullable=False)
+    email = db.Column(db.String(255), nullable=False)
+    petName = db.Column(db.String(255), nullable=False)
+    petBefore = db.column(db.Boolean())
+    housing = db.Column(db.String(255), nullable=False)
+    
