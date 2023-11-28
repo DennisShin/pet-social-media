@@ -1,1 +1,3 @@
-*/Pipfile.lock #Ignoring Local Python Dependencies
+#Ignoring Local Python Dependencies
+Pipfile.lock
+*/Pipfile.lock
