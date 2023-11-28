@@ -1,3 +1,3 @@
 # Pet Social Media Full-Stack App
 
-This is gonna be a cool project!
+This is a full-stack Flask-React application with pets!
