@@ -29,6 +29,7 @@ class User(db.Model, SerializerMixin):
     zipcode = db.Column(db.Integer, nullable=False)
 
     ownerships = db.relationship("Ownership", back_populates="user")
+    adoption_applications = db.relationship("AdoptionApplication", back_populates="user")
     pets = association_proxy("ownerships", "pet")
 
 
@@ -46,9 +47,12 @@ class Pet(db.Model, SerializerMixin):
     age = db.Column(db.Integer, nullable=False)
     gender = db.Column(db.String(255), nullable=False)
     type = db.Column(db.String(255), nullable=False)
+    is_adoptable = db.Column(db.Boolean(), default=False)
 
     ownerships = db.relationship("Ownership", back_populates="pet")
+    # adoption_applications = db.relationship("AdoptionApplication", back_populates="pet")
     users = association_proxy("ownerships", "user")
+
 
 
 class Ownership(db.Model, SerializerMixin):
@@ -69,16 +73,13 @@ class Ownership(db.Model, SerializerMixin):
 class AdoptionApplication(db.Model, SerializerMixin):
     __tablename__ = "adoption_applications"
 
-    # serialize_rules = ("-pet.adoption_applications", "-user.adoption_applications" )
+    serialize_rules = ("-user.adoption_applications",)
 
     id = db.Column(db.Integer, primary_key=True)
-    # pet_id = db.Column(db.Integer, db.ForeignKey("pets.id"), nullable=False)
-    # user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
-    name = db.Column(db.String(255), nullable=False)
-    email = db.Column(db.String(255), nullable=False)
-    petName = db.Column(db.String(255), nullable=False)
-    petBefore = db.column(db.Boolean())
-    housing = db.Column(db.String(255), nullable=False)
+    pet_id = db.Column(db.Integer, db.ForeignKey("pets.id"), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    HasHadPetBefore = db.Column(db.Boolean())
+    TypeOfHousing = db.Column(db.String(255), nullable=False)
 
     # pet = db.relationship("Pet", back_populates="adoption_applications")
-    # user = db.relationship("User", back_populates="adoption_applications")
+    user = db.relationship("User", back_populates="adoption_applications")

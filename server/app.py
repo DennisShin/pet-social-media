@@ -59,6 +59,7 @@ def create_user():
     return make_response(jsonify(new_user.to_dict()), 201)
 
 
+
 # Delete a user given id
 @app.delete("/api/users/<int:user_id>")
 def delete_user(user_id):
@@ -71,6 +72,14 @@ def delete_user(user_id):
 
 
 
+@app.get("/api/users/<int:user_id>/pets")
+def get_users_pets(user_id):
+    matching_user = User.query.get(user_id)
+    data = [pet.to_dict() for pet in matching_user.ownerships]
+    return make_response(jsonify(data), 200)
+
+
+
 
 #################################################
 ######### API Routes for pets in database #######
@@ -80,6 +89,12 @@ def delete_user(user_id):
 @app.get("/api/pets")
 def get_pets():
     pets = Pet.query.all()
+    data = [pet.to_dict() for pet in pets]
+    return make_response(jsonify(data), 200)
+
+@app.get("/api/adoptable_pets")
+def get_adoptable_pets():
+    pets = Pet.query.filter_by(is_adoptable=True)
     data = [pet.to_dict() for pet in pets]
     return make_response(jsonify(data), 200)
 
@@ -124,23 +139,41 @@ def delete_pet(pet_id):
 
 
 
+####################################################################
+################ ADDING A NEW ADOPTION APPLICATION #################
+####################################################################
+
+
+# Access a specific user's adoption applications
+@app.get("/api/users/<int:user_id>/adoptions")
+def get_adoption_applications(user_id):
+    matching_user = User.query.get(user_id)
+    data = [adoption_application.to_dict() for adoption_application in matching_user.adoption_applications]
+    return make_response(jsonify(data), 200)
+
+
+# Create a new adoption application
+# @app.post("/api/users/<int:user_id>/adoptions")
+# def create_adoption_application(user_id):
+#     matching_user = User.query.get(user_id)
+#     data = request.get_json()
+#     new_adoption_application = AdoptionApplication(
+#         pet_id=data["pet_id"],
+#         user_id=data["user_id"]
+#     )
+#     db.session.add(new_adoption_application)
+#     db.session.commit()
+#     return make_response(jsonify(new_adoption_application.to_dict()), 201)
+
+
+
 # 404 Not Found Handler
 @app.errorhandler(404)
 def not_found(error):
-    return make_response(jsonify({'error': 'Not found'}), 404)
-
-
-# 500 Internal Server Error Handler
-
-
-
-
-
-
-
+    return make_response(jsonify({'error': 'You clicked on a link. But the page does not exist. Error 404.'}), 404)
 
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="127.0.0.1",port=5555 ,debug=True)
 
