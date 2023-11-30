@@ -78,6 +78,25 @@ def get_users_pets(user_id):
     data = [pet.to_dict() for pet in matching_user.ownerships]
     return make_response(jsonify(data), 200)
 
+@app.post("/api/users/<int:user_id>/ownerships")
+def create_user_pets(user_id: int):
+    matching_user = User.query.get(user_id)
+    data = request.get_json()
+    pet_id = data["id"]
+    matching_pet=Pet.query.get(pet_id)
+
+    if not matching_user:
+        return make_response(jsonify({'ERROR': 'USER NOT FOUND'}), 404)
+    if not matching_pet:
+        return make_response(jsonify({'ERROR': 'PET NOT FOUND'}), 404)
+    
+    new_ownership = Ownership(pet_id=matching_pet.id, user_id=matching_user.id)
+
+    db.session.add(new_ownership)
+    db.session.commit()
+    
+    return make_response(jsonify(new_ownership.to_dict()), 201)
+
 
 
 
@@ -94,8 +113,8 @@ def get_pets():
 
 @app.get("/api/adoptable_pets")
 def get_adoptable_pets():
-    pets = Pet.query.filter_by(is_adoptable=True)
-    data = [pet.to_dict() for pet in pets]
+    pets = Pet.query.all()
+    data = [pet.to_dict() for pet in pets if pet.is_adoptable == True]
     return make_response(jsonify(data), 200)
 
 
@@ -120,7 +139,8 @@ def create_pet():
         size=data["size"],
         age=data["age"],
         gender=data["gender"],
-        type=data["type"]
+        type=data["type"],
+        is_adoptable=data["is_adoptable"]
     )
     db.session.add(new_pet)
     db.session.commit()
