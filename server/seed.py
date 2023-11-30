@@ -1,10 +1,18 @@
-from app import app
+from config import app
 from models import User, Pet, AdoptionApplication, Ownership, db
+import bcrypt
 
-User1 = User(username="John123", name="John", email="<EMAIL1>", password_hash="<PASSWORD>", zipcode=123456)
-User2 = User(username="Jane123", name="Jane", email="<EMAIL2>", password_hash="<PASSWORD>", zipcode = 123456)
-User3 = User(username="Mary123", name="Mary", email="<EMAIL3>", password_hash="<PASSWORD>", zipcode=123456)
-User4 = User(username="Mike123", name="Mike", email="<EMAIL4>", password_hash="<PASSWORD>", zipcode=123456)
+
+def encrypt_password(password):
+    salt = bcrypt.gensalt()
+    hashed_password = bcrypt.hashpw(password.encode("utf-8"), salt=salt)
+    return hashed_password.decode("utf-8")
+
+User1 = User(username="John", email="<EMAIL1>", password_hash=encrypt_password("<PASSWORD>"), zipcode=123456)
+User2 = User(username="Jane", email="<EMAIL2>", password_hash=encrypt_password("<PASSWORD>"), zipcode = 123456)
+User3 = User(username="Mary", email="<EMAIL3>", password_hash=encrypt_password("<PASSWORD>"), zipcode=123456)
+User4 = User(username="Mike", email="<EMAIL4>", password_hash=encrypt_password("<PASSWORD>"), zipcode=123456)
+
 
 
 Pet1 = Pet(name="Doggo", photo="http://placekitten.com/g/200/300", description="This is a dog", size="Medium", age=2, gender="Male", type="Dog", is_adoptable=True)
