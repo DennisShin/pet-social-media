@@ -4,13 +4,13 @@ return(
     <div>
     <form className="adoptionForm" onSubmit={addApplication}>
         <label className="form-label inline text-base m-2">Your Name </label>
-        <input type='text' name="name" value={applicationData.name} onChange={handleApplication} className="px-1 py-1"></input>
+        <input type='text' name="name" value={applicationData.name} onChange={handleApplication} className="px-1 py-1"/>
         
         <label className="form-label inline text-base m-2">Your Email </label>
-        <input type='text' name="email" value={applicationData.email} onChange={handleApplication} className="px-1 py-1"></input>
+        <input type='text' name="email" value={applicationData.email} onChange={handleApplication} className="px-1 py-1"/>
         
         <label className="form-label inline text-base m-2" > Animal you are interested in: </label>
-        <input type='text' name="petName" value={applicationData.pet} onChange={handleApplication} className="px-1 py-1"></input>
+        <input type='text' name="petName" value={applicationData.pet} onChange={handleApplication} className="px-1 py-1"/>
 
         <label>Have you had a pet before?</label>
         <select name = 'petBefore' value={applicationData.petBefore} onChange={handleApplication} className="px-1 py-1 rounded-full">
@@ -38,7 +38,7 @@ return(
         </div>
         
         <label className="form-label inline text-base m-2" > Who will take care of your pet if you become unable? </label>
-        <input type='text' name="incapacitated" value={applicationData.incapacitated} onChange={handleApplication} className="px-1 py-1"></input>
+        <input type='text' name="incapacitated" value={applicationData.incapacitated} onChange={handleApplication} className="px-1 py-1"/>
        
         <div>
         <label className="form-label inline text-base m-2" >Are there other animals in your home?</label>

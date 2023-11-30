@@ -1,37 +1,50 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import './css/index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Adoption from "./Routes/Adoption.js"
-import AdoptionForm from "./Routes/Adoption/AdoptionForm.js"
+import './css/index.css';
+
+import App from './App';
+import LogIn from "./LogIn.js"
+import Home from "./Home.js"
+import Adoption from "./Routes/Adoption/AdoptionPage.js"
 import Shop from "./Routes/Shop.js"
-import Social from "./Routes/Social.js"
+import Social from "./Routes/Social/SocialPage.js"
+import SignUp from './SignUp.js';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 const router = createBrowserRouter([{
-    path: "/",
-    element: <App/>,
-    children: [
+  path: "/",
+  element: <App/>,
+  children:[
       {
-        path: "Social",
-        element: <Social/>
+        path:"/login",
+        element: <LogIn/>
       },
       {
-        path:"Shop",
-        element: <Shop/>
+        path:"/signup",
+        element: <SignUp/>
       },
       {
-        path: "Adoption",
-        element: <Adoption/>,
-        children: [
-          {path: "Adoption Application",
-          element: <AdoptionForm/>}
-        ]
-      }
-    ]
+        path:"/home",
+        element: <Home/>,
+        children: [ 
+        {
+          path: "/home/social",
+          element: <Social/>
+        },
+        {
+          path:"/home/shop",
+          element: <Shop/>
+        },
+        {
+          path: "/home/adoption",
+          element: <Adoption/>
+          }
+        ]},
+      ]
   }])
 
 root.render(

@@ -1,7 +1,8 @@
 import './css/App.css';
-import NavBar from './NavBar.js'
 import {Outlet} from 'react-router-dom';
 import {useState, useEffect} from 'react'
+// import { IoPawSharp } from "react-icons/io5"
+
 
 
 export default function App() {
@@ -9,15 +10,14 @@ export default function App() {
   //fetch and state to see if there is a user, then change the login/progile/logout/signup options ont eh homepage depending on presence of user using ternary
  
 
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Pets Pets Pets!</h1>
+ <div className="bg-beige font-extrabold text-6xl p-4 font-pacifico">
+      <header className="font-serif text-darkestbrown ">
+        <h1>Paws</h1>
       </header>
-      <NavBar/>
-      <Outlet/>
-    </div>
+      <br/>
+    <Outlet/>
+</div>
   );
 }
-
-
