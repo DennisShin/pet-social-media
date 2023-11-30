@@ -36,6 +36,7 @@ export default function AdoptionPage(){
     return(
     <div>
     <AvailableAnimals/>
+    <br/>
     <AdoptionForm
         addApplication = {sendApplication}
         handleApplication = {handleApplication}

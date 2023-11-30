@@ -9,7 +9,7 @@ const [petList, setPetList] = useState([])
 const [newPetProfile, setNewPetProfile] = useState({name:"", photo:"", age:"", type:"", size:"", gender:"", description:""})
 
 useEffect(()=> {
-        fetch("/api/pets")
+        fetch("/api/users/<int:user_id>/pets")
         .then(response => response.json())
         .then(data => {
             console.log(data)

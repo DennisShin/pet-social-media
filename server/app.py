@@ -71,7 +71,7 @@ def delete_user(user_id):
     return make_response(jsonify(user.to_dict()), 200)
 
 
-
+# Get a specific user's pets
 @app.get("/api/users/<int:user_id>/pets")
 def get_users_pets(user_id):
     matching_user = User.query.get(user_id)
