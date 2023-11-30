@@ -7,13 +7,13 @@ User3 = User(username="Mary", email="<EMAIL3>", password_hash="<PASSWORD>", zipc
 User4 = User(username="Mike", email="<EMAIL4>", password_hash="<PASSWORD>", zipcode=123456)
 
 
-Pet1 = Pet(name="Doggo", photo="doggo.jpg", description="This is a dog", size="Medium", age=2, gender="Male", type="Dog", is_adoptable=True)
-Pet2 = Pet(name="Puppy", photo="puppy.jpg", description="This is a puppy", size="Medium", age=4, gender="Male", type="Dog", is_adoptable=False)
-Pet3 = Pet(name="Kitty", photo="kitty.jpg", description="This is a kitty", size="Medium", age=1, gender="Male", type="Cat", is_adoptable=False)
-Pet4 = Pet(name="Bird", photo="bird.jpg", description="This is a bird", size="Medium", age=1, gender="Male", type="Bird", is_adoptable=False)
-Pet5 = Pet(name="Fish", photo="fish.jpg", description="This is a fish", size="Medium", age=3, gender="Male", type="Fish", is_adoptable=False)
-Pet6 = Pet(name="Cat", photo="cat.jpg", description="This is a cat", size="Medium", age=6, gender="Male", type="Cat", is_adoptable=False)
-Pet7 = Pet(name="Dog", photo="dog.jpg", description="This is a dog", size="Medium", age=2, gender="Male", type="Dog", is_adoptable=False)
+Pet1 = Pet(name="Doggo", photo="http://placekitten.com/g/200/300", description="This is a dog", size="Medium", age=2, gender="Male", type="Dog", is_adoptable=True)
+Pet2 = Pet(name="Puppy", photo="http://placekitten.com/g/200/300", description="This is a puppy", size="Medium", age=4, gender="Male", type="Dog", is_adoptable=False)
+Pet3 = Pet(name="Kitty", photo="http://placekitten.com/g/200/300", description="This is a kitty", size="Medium", age=1, gender="Male", type="Cat", is_adoptable=False)
+Pet4 = Pet(name="Bird", photo="http://placekitten.com/g/200/300", description="This is a bird", size="Medium", age=1, gender="Male", type="Bird", is_adoptable=False)
+Pet5 = Pet(name="Fish", photo="http://placekitten.com/g/200/300", description="This is a fish", size="Medium", age=3, gender="Male", type="Fish", is_adoptable=False)
+Pet6 = Pet(name="Cat", photo="http://placekitten.com/g/200/300", description="This is a cat", size="Medium", age=6, gender="Male", type="Cat", is_adoptable=False)
+Pet7 = Pet(name="Dog", photo="http://placekitten.com/g/200/300", description="This is a dog", size="Medium", age=2, gender="Male", type="Dog", is_adoptable=False)
 
 def create_pets():
     all_pets = [Pet1, Pet2, Pet3, Pet4, Pet5, Pet6, Pet7]
