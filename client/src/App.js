@@ -12,11 +12,10 @@ export default function App() {
 
 
   return (
- <div className="bg-beige font-extrabold text-6xl p-4 font-pacifico">
-      <header className="font-serif text-darkestbrown ">
-        <h1>Paws</h1>
+ <div className="bg-beige p-4 font-extrabold ">
+      <header className="font-extrabold font-pacifico text-8xl text-darkestbrown ">
+        <h1 className='p-2'>Paws</h1>
       </header>
-      <br/>
     <Outlet/>
 </div>
   );

@@ -24,7 +24,6 @@ class User(db.Model, SerializerMixin):
     serialize_rules = ("-ownerships.user", "-adoption_applications.user")
 
     id = db.Column(db.Integer, primary_key=True)
-    # name = db.Column(db.String())
     username = db.Column(db.String(80), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password_hash = db.Column(db.String(128), nullable=False)
@@ -83,8 +82,15 @@ class AdoptionApplication(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     pet_id = db.Column(db.Integer, db.ForeignKey("pets.id"), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
-    HasHadPetBefore = db.Column(db.Boolean())
-    TypeOfHousing = db.Column(db.String(255), nullable=False)
+    petName = db.Column(db.String, nullable=False)
+    petBefore = db.Column(db.Boolean, nullable=False)
+    work = db.Column(db.String, nullable=False)
+    housing = db.Column(db.String(255), nullable=False)
+    incapacitated = db.Column(db.Boolean, nullable=False)
+    otherAnimals = db.Column(db.Boolean, nullable = False)
+    otherAnimalName = db.Column(db.String, nullable = True)
+    isFlexible = db.Column(db.Boolean, nullable=False)
+    
 
     # pet = db.relationship("Pet", back_populates="adoption_applications")
     user = db.relationship("User", back_populates="adoption_applications")

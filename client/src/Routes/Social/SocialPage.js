@@ -1,22 +1,27 @@
 import PetProfile from "./PetProfile";
-import AddPetProfile from "./AddPetProfile";
-import UserProfile from "./UserProfile";
+import AddPetProfile from "./AddPetProfile.js";
+
 import {useState, useEffect} from 'react'
 
-export default function SocialPage(){
+export default function SocialPage({user}){
 
 const [petList, setPetList] = useState([])
+const [friendPetList, setFriendPetList] = useState([])
 const [newPetProfile, setNewPetProfile] = useState({name:"", photo:"", age:"", type:"", size:"", gender:"", description:""})
 
 useEffect(()=> {
-        fetch("/api/users/<int:user_id>/pets")
+        fetch("/api/users/user_id/pets")
         .then(response => response.json())
         .then(data => {
             console.log(data)
             setPetList([data])
         })
         }, [])
-
+useEffect(()=>{
+    fetch('/api/pets')
+    .then(response=>response.json())
+    .then(data=>setFriendPetList(data))
+})
 function handleNewPet(event){
     setNewPetProfile({...newPetProfile, [event.target.name]: event.target.value})}
 
@@ -34,11 +39,10 @@ function addNewPetProfile(event){
     //resets pet profile form
     setNewPetProfile({...newPetProfile, [event.target.name]: event.target.value})
     }
-
-
 return(
-    <div style={{height: "50vh"}} >
-        <UserProfile/>
+    <div>
+        <h4 className="text-3xl">My Pets</h4>
+        <br/>
         {petList.map(pet=> <PetProfile key={pet.id}
                     photo = {pet.photo}
                     name={pet.name}
@@ -47,10 +51,14 @@ return(
                     gender={pet.gender}
                     size = {pet.size}
                     description = {pet.description}/>)}
+        <br/>
+    <h4 className="text-3xl">My Pet's Friends</h4>
+            friendPetList
+        <br/>
         <AddPetProfile handleNewPet={handleNewPet}
                         addNewPetProfile = {addNewPetProfile}
-                        newPetData = {newPetData}
-                        />
+                        newPetData = {newPetData}/>
+                                 
     </div>
 )
 }
