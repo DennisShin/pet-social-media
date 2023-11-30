@@ -60,6 +60,7 @@ def create_user():
     data = request.get_json()
     new_user = User(
         username=data["username"],
+        name = data["name"],
         email=data["email"],
         password_hash=data["password_hash"],
         zipcode=data["zipcode"]

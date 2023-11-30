@@ -56,12 +56,12 @@ with app.app_context():
     pets = create_pets()
     users = create_users()
     ownerships = create_ownerships()
-    adoption_applications = test_create_adoption_application()
+    # adoption_applications = test_create_adoption_application()
 
     # Add all to the database.
     db.session.add_all(ownerships)
     db.session.add_all(pets)
     db.session.add_all(users)
-    db.session.add(adoption_applications)
+    # db.session.add(adoption_applications)
 
     db.session.commit()
