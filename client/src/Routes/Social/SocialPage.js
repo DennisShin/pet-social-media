@@ -10,7 +10,7 @@ const [friendPetList, setFriendPetList] = useState([])
 const [newPetProfile, setNewPetProfile] = useState({name:"", photo:"", age:"", type:"", size:"", gender:"", description:""})
 
 useEffect(()=> {
-        fetch("/api/users/user_id/pets")
+        fetch("/api/users/me/pets")
         .then(response => response.json())
         .then(data => {
             console.log(data)
@@ -21,7 +21,7 @@ useEffect(()=>{
     fetch('/api/pets')
     .then(response=>response.json())
     .then(data=>setFriendPetList(data))
-})
+},[])
 function handleNewPet(event){
     setNewPetProfile({...newPetProfile, [event.target.name]: event.target.value})}
 
