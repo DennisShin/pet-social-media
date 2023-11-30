@@ -1,3 +1,9 @@
 #Ignoring Local Python Dependencies
 Pipfile.lock
 */Pipfile.lock
+
+# SQL database subdirectories
+instance/
+*/instance/
+migrations/
+*/migrations/
