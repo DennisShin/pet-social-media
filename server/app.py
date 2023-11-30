@@ -1,12 +1,14 @@
 from flask import make_response, jsonify, request
 from flask import Flask
 from flask_migrate import Migrate
+from flask_cors import CORS
 from models import db, User, Pet, AdoptionApplication, Ownership
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///petsocial.db"
 migrate = Migrate(app, db)
 db.init_app(app)
+CORS(app)
 
 #######################################################
 ######## INITIAL SETUP ROUTES FOR APPLICATION #########
