@@ -57,12 +57,17 @@ def get_user(user_id):
 # Create a new user
 @app.post("/api/users")
 def create_user():
+    def encrypt_password(password):
+        salt = bcrypt.gensalt()
+        hashed_password = bcrypt.hashpw(password.encode("utf-8"), salt=salt)
+        return hashed_password.decode("utf-8")
+    
     data = request.get_json()
     new_user = User(
         username=data["username"],
         name = data["name"],
         email=data["email"],
-        password_hash=data["password_hash"],
+        password_hash=encrypt_password(data["password_hash"]),
         zipcode=data["zipcode"]
     )
     db.session.add(new_user)
@@ -227,6 +232,8 @@ def add_user():
         password = payload["password"]
         email = payload["email"]
         zipcode = payload["zipcode"]
+        name = payload["name"]
+        reason = payload["reason"]
 
         # Generate salt for strenghening password encryption.
         # NOTE: Salts add additional random bits to passwords prior to encryption.
@@ -236,9 +243,11 @@ def add_user():
         # Create new user instance using username and hashed password.
         new_user = User(
             username=username,
+            name=name,
             password_hash=hashed_password.decode("utf-8"),
             email = email,
-            zipcode = zipcode
+            zipcode = zipcode,
+            reason = reason
         )
 
         if new_user is not None:

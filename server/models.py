@@ -30,6 +30,7 @@ class User(db.Model, SerializerMixin):
     password_hash = db.Column(db.String(128), nullable=False)
     zipcode = db.Column(db.Integer, nullable=False)
     is_admin = db.Column(db.Boolean, default=False)
+    reason = db.Column(db.String())
 
     ownerships = db.relationship("Ownership", back_populates="user")
     adoption_applications = db.relationship("AdoptionApplication", back_populates="user")
