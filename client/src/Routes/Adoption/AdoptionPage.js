@@ -1,7 +1,7 @@
 import AdoptionForm from "./AdoptionForm.js"
 import AvailableAnimals from "./AvailableAnimals.js"
 import {useState} from 'react'
-import { useNavigate } from "react-router-dom"
+
 
 
 export default function AdoptionPage(){
@@ -22,7 +22,7 @@ export default function AdoptionPage(){
     //submission function                                       
     function sendApplication(event){
         event.preventDefault();
-        fetch("/api/users/<int:id>/adoptions", {
+        fetch("/api/users/user_id/adoptions", {
             method:'POST',
             headers:{"Content-Type":"application/json"},
             body: JSON.stringify(newApplication)

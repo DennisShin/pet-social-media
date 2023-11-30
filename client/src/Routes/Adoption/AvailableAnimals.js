@@ -1,16 +1,16 @@
 import {useState, useEffect} from 'react'
-import AnimalCard from "../../AnimalCard"
+import AnimalCard from "./AnimalCard"
 
 export default function AvailableAnimals(){
     const [availableAnimals, setAvailableAnimals] = useState([])
 
     useEffect(()=>{
-        fetch("/api/pets")
+        fetch("/api/adoptable_pets")
         .then(response => response.json())
         .then(data=>setAvailableAnimals(data))},[])
 
     return(
-    <div>
+    <div className="flex p-4">
         {availableAnimals.map(animal=>
             <AnimalCard key = {animal.id}
                 name = {animal.name}
