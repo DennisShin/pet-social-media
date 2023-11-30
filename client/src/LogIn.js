@@ -10,10 +10,11 @@ function handleLogIn(event){
       event.preventDefault();
       setUser({...user, [event.target.name]: event.target.value})
         }
-      const userCred = {name: user.username, password : user.password}
+      const userCred = {username: user.username, password : user.password}
 
-function logIn(){
-    fetch("/api/users", {
+function logIn(event){
+  event.preventDefault();
+    fetch("/login", {
       method: "POST",
       headers: {"Content-Type":"application/json"},
       body: JSON.stringify(userCred)
