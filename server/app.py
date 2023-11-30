@@ -1,14 +1,12 @@
 from flask import make_response, jsonify, request
 from flask import Flask
 from flask_migrate import Migrate
-from flask_cors import CORS
 from models import db, User, Pet, AdoptionApplication, Ownership
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///petsocial.db"
 migrate = Migrate(app, db)
 db.init_app(app)
-CORS(app)
 
 #######################################################
 ######## INITIAL SETUP ROUTES FOR APPLICATION #########
@@ -71,7 +69,7 @@ def delete_user(user_id):
     return make_response(jsonify(user.to_dict()), 200)
 
 
-# Get a specific user's pets
+
 @app.get("/api/users/<int:user_id>/pets")
 def get_users_pets(user_id):
     matching_user = User.query.get(user_id)
@@ -173,17 +171,18 @@ def get_adoption_applications(user_id):
 
 
 # Create a new adoption application
-# @app.post("/api/users/<int:user_id>/adoptions")
-# def create_adoption_application(user_id):
-#     matching_user = User.query.get(user_id)
-#     data = request.get_json()
-#     new_adoption_application = AdoptionApplication(
-#         pet_id=data["pet_id"],
-#         user_id=data["user_id"]
-#     )
-#     db.session.add(new_adoption_application)
-#     db.session.commit()
-#     return make_response(jsonify(new_adoption_application.to_dict()), 201)
+@app.post("/api/users/<int:user_id>/adoptions")
+def create_adoption_application(user_id):
+    matching_user = User.query.get(user_id)
+    data = request.get_json()
+    matching_pet = data["pet_id"]
+    new_adoption_application = AdoptionApplication(
+        pet_id=matching_pet.id,
+        user_id=matching_user.id,
+    )
+    db.session.add(new_adoption_application)
+    db.session.commit()
+    return make_response(jsonify(new_adoption_application.to_dict()), 201)
 
 
 

@@ -20,7 +20,7 @@ db = SQLAlchemy()
 class User(db.Model, SerializerMixin):
     __tablename__ = "users"
 
-    serialize_rules = ("-ownerships.user", )
+    serialize_rules = ("-ownerships.user", "-adoption_applications.user")
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
