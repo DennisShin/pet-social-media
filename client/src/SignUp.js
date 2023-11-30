@@ -18,7 +18,7 @@ function addNewUser(event){
     method: "POST",
     headers: {"Content-Type":"application/json"},
     body: JSON.stringify(newUser)
-  }).then(response=>response.json)
+  }).then(response=>response.json())
   navigate('/LogIn')
 }
 
@@ -26,7 +26,7 @@ function addNewUser(event){
     <div className='p-2'>
     <form className="pl-2.5 w-full max-w bg-whiteish border border-slate rounded-lg shadow " onSubmit={addNewUser}>
       <br/>
-    <h2 className='text-3xl' p-4 my-4>Sign Up</h2>
+    <h2 className='text-3xl p-4 my-4'>Sign Up</h2>
         <label className="form-label inline text-base m-2 text-slate">Username</label>
         <input type='text' name="username" value={newUserData.username} onChange={handleSignUp} className="border leading-tight border-slate text-slate text-sm rounded-lg  w-3/4 p-2 my-2"/>
         <br/>
