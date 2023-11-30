@@ -9,19 +9,22 @@ const [petList, setPetList] = useState([])
 const [friendPetList, setFriendPetList] = useState([])
 const [newPetProfile, setNewPetProfile] = useState({name:"", photo:"", age:"", type:"", size:"", gender:"", description:""})
 
+//list of only the user's pets
 useEffect(()=> {
-        fetch("/api/users/me/pets")
+        fetch("/api/me/pets")
         .then(response => response.json())
         .then(data => {
             console.log(data)
-            setPetList([data])
-        })
+            setPetList(data)})
         }, [])
-useEffect(()=>{
-    fetch('/api/pets')
-    .then(response=>response.json())
-    .then(data=>setFriendPetList(data))
-},[])
+
+// useEffect(()=>{
+//     fetch('/api/pets')
+//     .then(response=>response.json())
+//     .then(data=>setFriendPetList(data))
+// },[])
+
+//adding a pet
 function handleNewPet(event){
     setNewPetProfile({...newPetProfile, [event.target.name]: event.target.value})}
 
@@ -39,11 +42,12 @@ function addNewPetProfile(event){
     //resets pet profile form
     setNewPetProfile({...newPetProfile, [event.target.name]: event.target.value})
     }
+
 return(
     <div>
         <h4 className="text-3xl">My Pets</h4>
         <br/>
-        {petList.map(pet=> <PetProfile key={pet.id}
+        {petList.map(pet=> <PetProfile key='3'
                     photo = {pet.photo}
                     name={pet.name}
                     type = {pet.type}
@@ -53,7 +57,8 @@ return(
                     description = {pet.description}/>)}
         <br/>
     <h4 className="text-3xl">My Pet's Friends</h4>
-            friendPetList
+       {friendPetList.map(pet=>
+        <PetProfile/>)}     
         <br/>
         <AddPetProfile handleNewPet={handleNewPet}
                         addNewPetProfile = {addNewPetProfile}

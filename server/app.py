@@ -132,7 +132,7 @@ def get_pets():
 @authorization_required
 def get_user_pets(current_user):
     logged_in_user = User.query.get(current_user["id"])
-    data = [pet.pet.to_dict(only=("age","description","gender","id","is_adoptable","name")) for pet in logged_in_user.ownerships]
+    data = [pet.pet.to_dict(only=("age","description","gender","id","is_adoptable","name", "photo")) for pet in logged_in_user.ownerships]
     return make_response(jsonify(data), 200)
 
 @app.get("/api/adoptable_pets")

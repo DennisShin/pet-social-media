@@ -14,7 +14,7 @@ function handleSignUp(event){
 
 function addNewUser(event){
   event.preventDefault();
-  fetch("/api/users", {
+  fetch("/signup", {
     method: "POST",
     headers: {"Content-Type":"application/json"},
     body: JSON.stringify(newUser)
