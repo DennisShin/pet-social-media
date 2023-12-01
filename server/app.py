@@ -201,10 +201,18 @@ def get_adoption_applications(user_id):
 def create_adoption_application(user_id):
     matching_user = User.query.get(user_id)
     data = request.get_json()
-    matching_pet = Pet.query.get(data["petName"])
+    matching_pet = Pet.query.filter(Pet.name == data["petName"]).first()
     new_adoption_application = AdoptionApplication(
         pet_id=matching_pet.id,
         user_id=matching_user.id,
+        petName=data["petName"],
+        petBefore = data["petBefore"],
+        work=data["work"],
+        housing=data["housing"],
+        incapacitated=data["incapacitated"],
+        otherAnimals=data["otherAnimals"],
+        otherAnimalName=data["otherAnimalName"],
+        isFlexible=data["isFlexible"]
     )
     db.session.add(new_adoption_application)
     db.session.commit()

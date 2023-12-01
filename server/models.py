@@ -85,13 +85,13 @@ class AdoptionApplication(db.Model, SerializerMixin):
     pet_id = db.Column(db.Integer, db.ForeignKey("pets.id"), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     petName = db.Column(db.String, nullable=False)
-    petBefore = db.Column(db.Boolean, nullable=False)
+    petBefore = db.Column(db.String, nullable=False)
     work = db.Column(db.String, nullable=False)
     housing = db.Column(db.String(255), nullable=False)
-    incapacitated = db.Column(db.Boolean, nullable=False)
-    otherAnimals = db.Column(db.Boolean, nullable = False)
-    otherAnimalName = db.Column(db.String, nullable = True)
-    isFlexible = db.Column(db.Boolean, nullable=False)
+    incapacitated = db.Column(db.String, nullable=False)
+    otherAnimals = db.Column(db.String)
+    otherAnimalName = db.Column(db.String)
+    isFlexible = db.Column(db.String, nullable=False)
     
 
     # pet = db.relationship("Pet", back_populates="adoption_applications")
