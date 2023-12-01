@@ -8,10 +8,10 @@ def encrypt_password(password):
     hashed_password = bcrypt.hashpw(password.encode("utf-8"), salt=salt)
     return hashed_password.decode("utf-8")
 
-User1 = User(username="John", email="<EMAIL1>", password_hash=encrypt_password("<PASSWORD>"), zipcode=123456)
-User2 = User(username="Jane", email="<EMAIL2>", password_hash=encrypt_password("<PASSWORD>"), zipcode = 123456)
-User3 = User(username="Mary", email="<EMAIL3>", password_hash=encrypt_password("<PASSWORD>"), zipcode=123456)
-User4 = User(username="Mike", email="<EMAIL4>", password_hash=encrypt_password("<PASSWORD>"), zipcode=123456)
+User1 = User(username="John", name="John", email="<EMAIL1>", password_hash=encrypt_password("<PASSWORD>"), zipcode=123456)
+User2 = User(username="Jane", name="Jane", email="<EMAIL2>", password_hash=encrypt_password("<PASSWORD>"), zipcode = 123456)
+User3 = User(username="Mary", name="Mary", email="<EMAIL3>", password_hash=encrypt_password("<PASSWORD>"), zipcode=123456)
+User4 = User(username="Mike", name="Mike", email="<EMAIL4>", password_hash=encrypt_password("<PASSWORD>"), zipcode=123456)
 
 
 

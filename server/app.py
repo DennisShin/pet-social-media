@@ -42,7 +42,7 @@ def get_me(current_user):
     logged_in_user = User.query.get(current_user["id"])
 
 
-    return make_response(jsonify(logged_in_user.to_dict(only=("adoption_applications", "email","id","ownerships","username","zipcode"))), 200)
+    return make_response(jsonify(logged_in_user.to_dict()),200)
 
 # Querying a specific user given id
 @app.get("/api/users/<int:user_id>")
@@ -201,7 +201,7 @@ def get_adoption_applications(user_id):
 def create_adoption_application(user_id):
     matching_user = User.query.get(user_id)
     data = request.get_json()
-    matching_pet = data["pet_id"]
+    matching_pet = Pet.query.get(data["petName"])
     new_adoption_application = AdoptionApplication(
         pet_id=matching_pet.id,
         user_id=matching_user.id,
