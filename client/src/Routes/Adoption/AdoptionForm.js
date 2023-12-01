@@ -1,11 +1,11 @@
 
 export default function AdoptionForm({addApplication, handleApplication, applicationData}){
 return(
-    <div>
-    <form className="pl-2.5 w-full max-w bg-whiteish border border-slate rounded-lg shadow p-8 py-4" onSubmit={addApplication}>
+    <div >
+    <form  className="pl-2.5 w-full max-w bg-whiteish border border-slate rounded-lg shadow p-8 py-4 " onSubmit={addApplication}>
     <h3 className="text-darkestbrown text-4xl font-pacifico">Adoption Form</h3>
     <br/>
-      
+    {/* <button type="button" className="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center" data-modal-hide="popup-modal"> x </button> */}
         <label className="form-label inline text-base m-2 text-slate" > Animal you are interested in: </label>
         <input type='text' name="petName" value={applicationData.petName} onChange={handleApplication} className="border border-slate text-black text-sm rounded-lg  w-1/2 p-2 my-2"/>
         <br/>
@@ -56,7 +56,7 @@ return(
                 <option value="noFlex">No</option>
                 </select>
         <br/>
-    <button className="p-2 w-m text-whiteish bg-darkbrown hover:bg-darkestbrown font-medium rounded-lg text-sm text-center" type="submit">Submit Application </button>
+    <button className="p-2 w-m text-whiteish bg-darkbrown hover:bg-darkestbrown font-medium rounded-lg text-sm text-center" type="submit" data-modal-hide="popup-modal">Submit Application </button>
     </form>
 </div> )
 }

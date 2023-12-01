@@ -1,14 +1,14 @@
 import AdoptionForm from "./AdoptionForm.js"
 import AvailableAnimals from "./AvailableAnimals.js"
 import {useState, useEffect} from 'react'
-import {useNavigate} from 'react-router-dom'
+
 
 
 export default function AdoptionPage(){
     //set state for user
     const [user, setUser]= useState({})
 
-    const navigate = useNavigate()
+
     
     useEffect(()=>{
         fetch("/api/me")
@@ -46,11 +46,10 @@ export default function AdoptionPage(){
             headers:{"Content-Type":"application/json"},
             body: JSON.stringify(newApplication)
         }).then(response=>response.json())
-
-    //resets application to blank
+        .then(
         setApplicationData({ petName:"", petBefore:"", work:"", 
             housing:"", incapacitated:"", otherAnimals:"", 
-            otherAnimalName:"", isFlexible:""})}
+            otherAnimalName:"", isFlexible:""}))}
 
     return(
     <div>

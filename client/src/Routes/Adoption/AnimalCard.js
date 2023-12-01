@@ -1,5 +1,6 @@
 export default function AnimalCard({name, photo, gender, type, age, size, description, applyToAdopt}){
 
+
 return(
 
 
@@ -14,7 +15,8 @@ return(
                 <p >{size}</p>
                 <p>{description}</p>
             </div>
-        <button onClick={applyToAdopt} type='button'>Apply to adopt</button>
+        <button data-modal-show="adoptionForm"  data-modal-toggle="popup-modal" className='bg-darkbrown hover:bg-darkestbrown text-whiteish p-2 rounded-lg'
+        type='button'>Apply to adopt</button>
         </div>    
 </div>
 
