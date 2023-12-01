@@ -30,6 +30,13 @@ Pet4 = Pet(name="Bird", photo="http://placekitten.com/g/200/303", description="T
 Pet5 = Pet(name="Fish", photo="http://placekitten.com/g/200/304", description="This is totally a fish", size="Medium", age=3, gender="Male", type="Fish", is_adoptable=False)
 Pet6 = Pet(name="Cat", photo="http://placekitten.com/g/200/305", description="This is a cat", size="Medium", age=6, gender="Male", type="Cat", is_adoptable=True)
 Pet7 = Pet(name="Dog", photo="http://placekitten.com/g/200/306", description="This is totally a dog", size="Medium", age=2, gender="Male", type="Dog", is_adoptable=False)
+Pet8 = Pet(name="Cat", photo="http://placekitten.com/g/200/307", description="This is a cat", size="Medium", age=6, gender="Male", type="Cat", is_adoptable=True)
+Pet9 = Pet(name="Cat", photo="http://placekitten.com/g/200/308", description="This is a cat", size="Medium", age=6, gender="Male", type="Cat", is_adoptable=True)
+Pet10 = Pet(name="Cat", photo="http://placekitten.com/g/200/309", description="This is a cat", size="Medium", age=6, gender="Male", type="Cat", is_adoptable=True)
+Pet11 = Pet(name="Cat", photo="http://placekitten.com/g/201/305", description="This is a cat", size="Medium", age=6, gender="Male", type="Cat", is_adoptable=True)
+Pet12 = Pet(name="Cat", photo="http://placekitten.com/g/202/305", description="This is a cat", size="Medium", age=6, gender="Male", type="Cat", is_adoptable=True)
+Pet13 = Pet(name="Cat", photo="http://placekitten.com/g/203/305", description="This is a cat", size="Medium", age=6, gender="Male", type="Cat", is_adoptable=True)
+
 
 def create_pets():
     all_pets = [Pet1, Pet2, Pet3, Pet4, Pet5, Pet6, Pet7]
