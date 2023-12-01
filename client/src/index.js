@@ -7,6 +7,7 @@ import './css/index.css';
 import App from './App';
 import LogIn from "./LogIn.js"
 import Home from "./Home.js"
+import UserProfile from  './UserProfile.js'
 import Adoption from "./Routes/Adoption/AdoptionPage.js"
 import Shop from "./Routes/Shop.js"
 import Social from "./Routes/Social/SocialPage.js"
@@ -31,6 +32,11 @@ const router = createBrowserRouter([{
         path:"/home",
         element: <Home/>,
         children: [ 
+        {
+          path:'/home/userprofile',
+          element: <UserProfile/>,
+          // loader: async () => fetch('/api/me').then(response=>response.json())
+      },
         {
           path: "/home/social",
           element: <Social/>

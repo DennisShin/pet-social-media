@@ -47,7 +47,8 @@ return(
     <div>
         <h4 className="text-3xl">My Pets</h4>
         <br/>
-        {petList.map(pet=> <PetProfile key='3'
+    <div className="flex p-4">
+        {petList.map(pet=> <PetProfile key={pet.id}
                     photo = {pet.photo}
                     name={pet.name}
                     type = {pet.type}
@@ -55,10 +56,15 @@ return(
                     gender={pet.gender}
                     size = {pet.size}
                     description = {pet.description}/>)}
+     </div>
         <br/>
     <h4 className="text-3xl">My Pet's Friends</h4>
-       {friendPetList.map(pet=>
-        <PetProfile/>)}     
+       {/* {friendPetList.map(pet=>
+        <PetProfile/>)}      */}
+        <br/>
+       <div className="flex p-4 max-w-sm rounded-lg justify-center border-slate border-8 ml-8">
+        <p>Coming soon! </p>
+        </div> 
         <br/>
         <AddPetProfile handleNewPet={handleNewPet}
                         addNewPetProfile = {addNewPetProfile}

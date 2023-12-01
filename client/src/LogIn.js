@@ -1,6 +1,7 @@
 import {useNavigate} from 'react-router-dom';
 import {useState} from 'react'
 
+
 export default function LogIn(){
 const navigate = useNavigate()
 
@@ -19,9 +20,10 @@ function logIn(event){
       headers: {"Content-Type":"application/json"},
       body: JSON.stringify(userCred)
     }).then(response=> response.json())
-    .then(data=> setUser(data))
+    .then(data=>{
+      setUser(data)
     if (user){
-      navigate('/Home')}
+      navigate('/Home/userprofile')}})
     }
   
 function toSignUp(){
